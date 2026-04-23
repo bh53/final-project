@@ -1,12 +1,20 @@
 #ifndef BOBCAT_UI_GROUP
 #define BOBCAT_UI_GROUP
 
+#define GL_SILENCE_DEPRECATION
+
+#define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
+
+// #include <OpenGL/gl3.h>
+#include <OpenGL/gl.h>
+
 #include "bobcat_ui.h"
 
 #include <FL/Enumerations.H>
 #include <FL/Fl_Gl_Window.H>
 #include <FL/Fl_PNG_Image.H>
-#include <GL/gl.h>
+// #include <GL/gl.h>
 
 #include <string>
 #include <functional>

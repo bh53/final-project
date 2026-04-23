@@ -12,8 +12,8 @@ Button* makeButton(int x, int y, int w, int h, const std::string& label) {
 
 Application::Application() {
     window = new Window(1200, 760, "Paint Application");
+    window->begin();
     canvas = new Canvas(10, 10, 860, 740);
-
     int panelX = 885;
     int buttonW = 135;
     int buttonH = 30;
@@ -90,6 +90,7 @@ Application::Application() {
     canvas->setTool(Canvas::Tool::Brush);
     canvas->setCurrentColor(0, 0, 0, false);
     refreshSelectionLabel();
+    window->end();
     window->show();
 }
 

@@ -1,12 +1,15 @@
 #ifndef BOBCAT_UI_CANVAS
 #define BOBCAT_UI_CANVAS
 
+#define GL_SILENCE_DEPRECATION
+
+#include <OpenGL/gl.h>
+
 #include "bobcat_ui.h"
 
 #include <FL/Enumerations.H>
 #include <FL/Fl_Gl_Window.H>
 #include <FL/Fl_PNG_Image.H>
-#include <GL/gl.h>
 
 #include <string>
 #include <functional>
@@ -90,6 +93,7 @@ public:
     }
 
     void draw() override {
+	glViewport(0, 0, w(), h());
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
@@ -97,12 +101,8 @@ public:
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         glEnable(GL_POINT_SMOOTH);
-        glPointSize(7.0f);
-        glColor3f(0.0f, 0.0f, 0.0f);
 
         render();
-
-        swap_buffers();
     }
 
     void onShow(std::function<void(bobcat::Widget *)> cb){
