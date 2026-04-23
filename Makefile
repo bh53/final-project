@@ -9,6 +9,8 @@
 SRC_DIR = src
 HEADERS_DIR = inc
 TEST_DIR = test
+BOBCAT_DIR = inc/bobcat_ui
+MAC_LIBS = -L/usr/local/Cellar/glew/2.3.1/lib -lGLEW -L/usr/local/Cellar/glfw/3.4/lib/ -lglfw
 
 OBJ_DIR = objects
 BIN_DIR = bin
@@ -21,9 +23,9 @@ TEST = test
 
 CXX = g++
 
-CXXFLAGS = -Wall -I$(HEADERS_DIR) -g
-LDFLAGS = -lfltk_images -lpng -lz -lfltk_gl -lGLU -lGL -lfltk -lXrender \
-          -lXext -lXft -lfontconfig -lpthread -ldl -lm -lX11
+CXXFLAGS = -Wall -I $(HEADERS_DIR) -I $(BOBCAT_DIR) -std=gnu++14 -g
+LDFLAGS = $(MAC_LIBS) -framework OpenGL -lfltk_images -lpng -lz -lfltk_gl -lGL -lfltk -lXrender \
+          -lXext -lpthread -ldl -lm -lX11
 
 MAKEFLAGS += --no-print-directory
 
