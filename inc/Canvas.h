@@ -75,6 +75,7 @@ public:
 
     public:
         virtual ~Shape() = default;
+	virtual std::string type() const = 0;
         Color color() const { return color_; }
         void color(Color c) { color_ = c; }
         virtual void draw(int w, int h) const = 0;
@@ -95,6 +96,7 @@ public:
         void move(float dx, float dy) override;
         void resizeFromBox(Point a, Point b) override;
         std::pair<Point, Point> bounds() const override;
+	std::string type() const override { return "Scribble"; }
     };
 
     class RectShape : public Shape {
@@ -109,6 +111,7 @@ public:
         void move(float dx, float dy) override;
         void resizeFromBox(Point a, Point b) override;
         std::pair<Point, Point> bounds() const override;
+	std::string type() const override { return "Rectangle"; }
     };
 
     class CircleShape : public Shape {
@@ -123,6 +126,7 @@ public:
         void move(float dx, float dy) override;
         void resizeFromBox(Point a, Point b) override;
         std::pair<Point, Point> bounds() const override;
+	std::string type() const override { return "Circle"; }
     };
 
     class PolygonShape : public Shape {
@@ -139,6 +143,22 @@ public:
         void move(float dx, float dy) override;
         void resizeFromBox(Point a, Point b) override;
         std::pair<Point, Point> bounds() const override;
+	std::string type() const override {
+		if (this->star_) { return "Star"; }
+		else {
+			switch(this->sides_) {
+				case 3:
+					return "Triangle";
+					break;
+				case 5:
+					return "Pentagon";
+					break;
+				default:
+					return "Polygon";
+			}
+
+		}
+	}
     };
 
 private:

@@ -100,7 +100,7 @@ void Application::refreshSelectionLabel() {
         redSlider->value(static_cast<int>(c.r * 255.0f));
         greenSlider->value(static_cast<int>(c.g * 255.0f));
         blueSlider->value(static_cast<int>(c.b * 255.0f));
-        selectionText->label("Selected: object");
+        selectionText->label("Selected: " + canvas->selectedShape()->type());
     } else {
         selectionText->label("Selected: none");
     }
