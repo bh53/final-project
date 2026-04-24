@@ -70,7 +70,7 @@ public:
         int left = x() + 10;
         int right = x() + w() - 10;
         int barY = y() + h() / 2 - 4;
-        int barH = 8;
+        int barH = 6;
         int span = right - left;
         int fillW = span > 0 ? (value_ * span) / max_ : 0;
 
@@ -88,7 +88,7 @@ public:
         fl_color(FL_BLACK);
         fl_font(FL_HELVETICA, 12);
         std::string text = caption + ": " + std::to_string(value_);
-        fl_draw(text.c_str(), x() + 6, y() + 14);
+        fl_draw(text.c_str(), x() + 6, y() + 11);
         fl_pop_clip();
     }
 };

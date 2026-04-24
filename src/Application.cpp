@@ -61,9 +61,9 @@ Application::Application() {
     TextBox* colorLabel = new TextBox(panelX, actionY + 3 * gap + 10, 180, 24, "RGB color picker");
     colorLabel->labelsize(13);
 
-    redSlider = new ColorSlider(panelX, actionY + 3 * gap + 40, 260, 32, "Red", FL_RED);
-    greenSlider = new ColorSlider(panelX, actionY + 3 * gap + 78, 260, 32, "Green", FL_GREEN);
-    blueSlider = new ColorSlider(panelX, actionY + 3 * gap + 116, 260, 32, "Blue", FL_BLUE);
+    redSlider = new ColorSlider(panelX, actionY + 3 * gap + 40, 260, 42, "Red", FL_RED);
+    greenSlider = new ColorSlider(panelX, actionY + 3 * gap + 78, 260, 42, "Green", FL_GREEN);
+    blueSlider = new ColorSlider(panelX, actionY + 3 * gap + 116, 260, 42, "Blue", FL_BLUE);
 
     redSlider->value(0);
     greenSlider->value(0);
