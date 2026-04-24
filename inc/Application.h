@@ -20,11 +20,13 @@ class Application : public bobcat::Application_ {
     ColorSlider* redSlider;
     ColorSlider* greenSlider;
     ColorSlider* blueSlider;
-    bobcat::TextBox* selectionText;
+    bobcat::TextBox* objectSelectionText;
+    bobcat::TextBox* toolSelectionText;
 
     void refreshSelectionLabel();
     void syncColorFromSliders();
     void setTool(Canvas::Tool tool);
+    void setToolText(int tool);
 
 public:
     Application();

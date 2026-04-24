@@ -20,8 +20,11 @@ Application::Application() {
     int rowY = 20;
     int gap = 38;
 
-    selectionText = new TextBox(panelX, rowY, 250, 24, "Selected: none");
-    selectionText->labelsize(13);
+    objectSelectionText = new TextBox(panelX, rowY-10, 250, 24, "Selected object: none");
+    objectSelectionText->labelsize(13);
+
+    toolSelectionText = new TextBox(panelX, rowY+5, 250, 24, "Selected tool: Brush");
+    toolSelectionText->labelsize(13);
 
     const std::vector<std::pair<std::string, Canvas::Tool>> toolDefs = {
         {"Brush", Canvas::Tool::Brush},
@@ -100,12 +103,11 @@ void Application::refreshSelectionLabel() {
         redSlider->value(static_cast<int>(c.r * 255.0f));
         greenSlider->value(static_cast<int>(c.g * 255.0f));
         blueSlider->value(static_cast<int>(c.b * 255.0f));
-        selectionText->label("Selected: " + canvas->selectedShape()->type());
+        objectSelectionText->label("Selected object: " + canvas->selectedShape()->type());
     } else {
-        selectionText->label("Selected: none");
+        objectSelectionText->label("Selected object: none");
     }
 }
-
 void Application::syncColorFromSliders() {
     canvas->setCurrentColor(redSlider->value(), greenSlider->value(), blueSlider->value(), true);
     refreshSelectionLabel();
@@ -114,4 +116,37 @@ void Application::syncColorFromSliders() {
 void Application::setTool(Canvas::Tool tool) {
     canvas->setTool(tool);
     refreshSelectionLabel();
+    setToolText(static_cast<int>(tool));
+}
+
+void Application::setToolText(int tool) {
+    switch(tool) {
+        case 0:
+            toolSelectionText->label("Selected tool: Brush");
+            break;
+        case 1:
+            toolSelectionText->label("Selected tool: Eraser");
+            break;
+        case 2:
+            toolSelectionText->label("Selected tool: Select");
+            break;
+        case 3:
+            toolSelectionText->label("Selected tool: Rectangle");
+            break;
+        case 4:
+            toolSelectionText->label("Selected tool: Circle");
+            break;
+        case 5:
+            toolSelectionText->label("Selected tool: Triangle");
+            break;
+        case 6:
+            toolSelectionText->label("Selected tool: Pentagon");
+            break;
+        case 7:
+            toolSelectionText->label("Selected tool: Star");
+            break;
+        default:
+            toolSelectionText->label("Selected tool: none");
+            break;
+    }
 }
