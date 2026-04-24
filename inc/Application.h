@@ -22,6 +22,7 @@ class Application : public bobcat::Application_ {
     ColorSlider* blueSlider;
     bobcat::TextBox* objectSelectionText;
     bobcat::TextBox* toolSelectionText;
+    bobcat::TextBox* colorPreview;
 
     void refreshSelectionLabel();
     void syncColorFromSliders();

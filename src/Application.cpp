@@ -72,6 +72,10 @@ Application::Application() {
     greenSlider->value(0);
     blueSlider->value(0);
 
+    colorPreview = new TextBox(panelX + 130, actionY + 3 * gap + 10, 130, 22, "");
+    colorPreview->box(FL_FLAT_BOX);
+    colorPreview->color(FL_BLACK);
+    
     canvas->onMouseDown([this](Widget*, float x, float y) {
         canvas->mouseDown(nullptr, x, y);
         refreshSelectionLabel();
@@ -110,6 +114,8 @@ void Application::refreshSelectionLabel() {
 }
 void Application::syncColorFromSliders() {
     canvas->setCurrentColor(redSlider->value(), greenSlider->value(), blueSlider->value(), true);
+    colorPreview->color(fl_rgb_color(redSlider->value(), greenSlider->value(), blueSlider->value()));
+    colorPreview->redraw();
     refreshSelectionLabel();
 }
 
