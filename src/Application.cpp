@@ -101,6 +101,8 @@ Application::Application() {
     canvas->setCurrentColor(0, 0, 0, false);
     refreshSelectionLabel();
     window->end();
+    window->resizable(canvas);
+    window->size_range(750, 600);
     window->show();
 }
 
