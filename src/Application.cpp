@@ -64,6 +64,9 @@ Application::Application() {
     TextBox* colorLabel = new TextBox(panelX, actionY + 3 * gap + 10, 180, 24, "RGB color picker");
     colorLabel->labelsize(13);
 
+    colorNameText = new TextBox(panelX, actionY + 3 * gap - 7, 180, 24, "Current color: black");
+    colorNameText->labelsize(13);
+
     redSlider = new ColorSlider(panelX, actionY + 3 * gap + 40, 260, 42, "Red", FL_RED);
     greenSlider = new ColorSlider(panelX, actionY + 3 * gap + 78, 260, 42, "Green", FL_GREEN);
     blueSlider = new ColorSlider(panelX, actionY + 3 * gap + 116, 260, 42, "Blue", FL_BLUE);
@@ -107,7 +110,7 @@ void Application::refreshSelectionLabel() {
         redSlider->value(static_cast<int>(c.r * 255.0f));
         greenSlider->value(static_cast<int>(c.g * 255.0f));
         blueSlider->value(static_cast<int>(c.b * 255.0f));
-        objectSelectionText->label("Selected object: " + canvas->selectedShape()->type());
+        objectSelectionText->label("Selected object: " + getColorName(canvas->selectedShape()->color().r * 255, canvas->selectedShape()->color().g * 255, canvas->selectedShape()->color().b * 255) + " " + canvas->selectedShape()->type());
     } else {
         objectSelectionText->label("Selected object: none");
     }
@@ -117,6 +120,7 @@ void Application::syncColorFromSliders() {
     colorPreview->color(fl_rgb_color(redSlider->value(), greenSlider->value(), blueSlider->value()));
     colorPreview->redraw();
     refreshSelectionLabel();
+    colorNameText->label("Current color: " + getColorName(redSlider->value(), greenSlider->value(), blueSlider->value()));
 }
 
 void Application::setTool(Canvas::Tool tool) {

@@ -96,7 +96,7 @@ public:
         void move(float dx, float dy) override;
         void resizeFromBox(Point a, Point b) override;
         std::pair<Point, Point> bounds() const override;
-	std::string type() const override { return "Scribble"; }
+	std::string type() const override { return "scribble"; }
     };
 
     class RectShape : public Shape {
@@ -111,7 +111,7 @@ public:
         void move(float dx, float dy) override;
         void resizeFromBox(Point a, Point b) override;
         std::pair<Point, Point> bounds() const override;
-	std::string type() const override { return "Rectangle"; }
+	std::string type() const override { return "rectangle"; }
     };
 
     class CircleShape : public Shape {
@@ -126,7 +126,7 @@ public:
         void move(float dx, float dy) override;
         void resizeFromBox(Point a, Point b) override;
         std::pair<Point, Point> bounds() const override;
-	std::string type() const override { return "Circle"; }
+	std::string type() const override { return "circle"; }
     };
 
     class PolygonShape : public Shape {
@@ -148,13 +148,13 @@ public:
 		else {
 			switch(this->sides_) {
 				case 3:
-					return "Triangle";
+					return "triangle";
 					break;
 				case 5:
-					return "Pentagon";
+					return "pentagon";
 					break;
 				default:
-					return "Polygon";
+					return "polygon";
 			}
 
 		}

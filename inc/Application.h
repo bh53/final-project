@@ -4,8 +4,9 @@
 #include <bobcat_ui/all.h>
 #include <Canvas.h>
 #include <Slider.h>
-
+#include <Color.h>
 #include <vector>
+
 
 class Application : public bobcat::Application_ {
     bobcat::Window* window;
@@ -23,6 +24,7 @@ class Application : public bobcat::Application_ {
     bobcat::TextBox* objectSelectionText;
     bobcat::TextBox* toolSelectionText;
     bobcat::TextBox* colorPreview;
+    bobcat::TextBox* colorNameText;
 
     void refreshSelectionLabel();
     void syncColorFromSliders();
