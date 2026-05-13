@@ -1,6 +1,6 @@
 #include <Canvas.h>
 
-#include <OpenGL/gl.h>
+#include <GL/gl.h>
 
 using namespace std;
 
